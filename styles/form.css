@@ -1,0 +1,40 @@
+form {
+    padding: 20px 20px 30px 20px;
+    box-shadow: 0px -4px 0px rgba(var(--black-shadow), 0.25);
+    border-radius: 30px 30px 0px 0px;
+
+    fieldset {
+        border: none;
+
+        legend {
+            margin-bottom: 10px;
+        }
+
+        fieldset:first-of-type {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0px 20px;
+
+            label {
+                transition: var(--trans4);
+
+                &:has(:checked) {
+                    background-color: var(--blue);
+                    color: var(--white);
+                }
+            }
+         
+        }
+        
+    }
+
+    > fieldset > legend {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+    }
+}
