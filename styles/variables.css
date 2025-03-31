@@ -12,15 +12,23 @@
     --trans4: .4s;
 }
 
-.f-14 {
+.f-18 {
     font-size: 18px;
     line-height: 30px;
+}
+
+.f-14 {
+    font-size: 14px;
+    line-height: 23px;
 }
 
 .btn-primairy {
     padding: 10px 20px;
     background-color: var(--blue);
-    border: 1px solid var(--blue)
+    border: 1px solid var(--blue);
+    border-radius: 15px;
+    color: var(--white);
+    font-weight: bold;
 }
 
 .btn-primairy-outline {

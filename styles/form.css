@@ -1,7 +1,15 @@
 form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     padding: 20px 20px 30px 20px;
     box-shadow: 0px -4px 0px rgba(var(--black-shadow), 0.25);
     border-radius: 30px 30px 0px 0px;
+    display: none;
+
+    &:has(.close-btn input:checked) {
+        display: none;
+    }
 
     fieldset {
         border: none;
@@ -10,30 +18,78 @@ form {
             margin-bottom: 10px;
         }
 
-        fieldset:first-of-type {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0px 20px;
+        fieldset {
+            &:first-of-type {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0px 20px;
+    
+                label {
+                    transition: var(--trans4);
+                    
+                    /* Bron: https://codepen.io/shooft/pen/MWRwvro */
+                    &:has(:checked) {
+                        background-color: var(--blue);
+                        color: var(--white);
+                    }
+                }
+             
+            }
+    
+            &:last-of-type {
+                display: flex;
+                flex-wrap: wrap;
 
-            label {
-                transition: var(--trans4);
+                label {
+                    display: block;
+                    font-size: 14px;
+                    line-height: 23px;
+                    font-weight: bold;
+                    padding: 5px 10px;
+                    margin: 5px 5px;
+                    background-color: var(--gray);
+                    border-radius: 5px;
+                    color: #636363;
+                    transition: var(--trans4);
 
-                &:has(:checked) {
-                    background-color: var(--blue);
-                    color: var(--white);
+                    &:has(:checked) {
+                        background-color: var(--blue);
+                        color: var(--white);
+                    }
                 }
             }
-         
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 23px;
+            right: 25px;
+            width: 24px;
+            aspect-ratio: 1/1;
+            border: none;
+            background-color: transparent;
+            background-image: url("../public/images/icons/close.svg");
         }
         
     }
 
-    > fieldset > legend {
-        font-weight: bold;
-        text-align: center;
+    & > fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        > legend {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 10px;
+      
+        }
     }
 
-    input[type="radio"] {
+    input[type="radio"], input[type="checkbox"]{
         position: absolute;
         opacity: 0;
     }
