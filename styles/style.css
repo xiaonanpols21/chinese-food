@@ -11,6 +11,11 @@
 
 body {
     font-family: "Ubuntu", sans-serif;
+
+    > button {
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
 }
 
 .visually-hidden {

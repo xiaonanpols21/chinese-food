@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1 class="visually-hidden">Chinese food filter app</h1>
-        <button aria-label="Filter button">Filter</button>
+        <button class="btn-primairy f-18" aria-label="Filter button">Filter</button>
         <main>
             <ul>
                 
@@ -19,99 +19,100 @@
         </main>
         <section>
             <h3 class="visually-hidden">Pagination</h3>
-            <button>
-                Left
-            </button>
-            <button class="next">
-                Right
-            </button>
+            <button aria-label="Previous items button" class="prev"></button>
+
+            <!-- FIXME: Change input type text to also type in page number to navigate -->
+            <div class="f-16">
+            </div>
+            <button aria-label="Next items button" class="next"></button>
         </section>
-        <form>
-            <fieldset>
-                <legend class="f-18">Filter</legend>
-                <label class="close-btn">
-                    <input type="radio" aria-label="Close button">
-                </label>
-
+        <dialog>
+            <form>
                 <fieldset>
-                    <legend class="f-18">Level</legend>
-
-                    <label class="btn-primairy-outline f-18">
-                        Easy
-                        <input type="radio" name="level" value="easy">
-                    </label>
-                    <label  class="btn-primairy-outline f-18">
-                        Hard
-                        <input type="radio" name="level" value="easy">
-                    </label>
+                    <legend class="f-18">Filter</legend>
+                    <button class="close-btn" aria-label="CLose button"></button>
+    
+                    <fieldset>
+                        <legend class="f-18">Level</legend>
+    
+                        <label class="btn-primairy-outline f-18">
+                            Easy
+                            <input type="radio" name="level" value="easy">
+                        </label>
+                        <label  class="btn-primairy-outline f-18">
+                            Hard
+                            <input type="radio" name="level" value="easy">
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="f-18">Tags</legend>
+    
+                        <label>
+                            Soup
+                            <input type="checkbox" name="tag1" value="soup">
+                        </label>
+                        <label>
+                            Chicken
+                            <input type="checkbox" name="tag2" value="chicken">
+                        </label>
+                        <label>
+                            Noodles
+                            <input type="checkbox" name="tag3" value="noodles">
+                        </label>
+                        <label>
+                            Tofu
+                            <input type="checkbox" name="tag4" value="tofu">
+                        </label>
+                        <label>
+                            Chilli
+                            <input type="checkbox" name="tag5" value="chilli">
+                        </label>
+                        <label>
+                            Bean
+                            <input type="checkbox" name="tag6" value="bean">
+                        </label>
+                        <label>
+                            Egg
+                            <input type="checkbox" name="tag7" value="egg">
+                        </label>
+                        <label>
+                            Pork
+                            <input type="checkbox" name="tag8" value="pork">
+                        </label>
+                        <label>
+                            Vegetables
+                            <input type="checkbox" name="tag9" value="vegetables">
+                        </label>
+                        <label>
+                            Sticky
+                            <input type="checkbox" name="tag10" value="sticky">
+                        </label>
+                        <label>
+                            Miso
+                            <input type="checkbox" name="tag11" value="miso">
+                        </label>
+                        <label>
+                            broccoli
+                            <input type="checkbox" name="tag12" value="broccoli">
+                        </label>
+                        <label>
+                            Pak Choi
+                            <input type="checkbox" name="tag13" value="pak-choi">
+                        </label>
+                        <label>
+                            Ginger
+                            <input type="checkbox" name="tag14" value="ginger">
+                        </label>
+                        <label>
+                            Duck
+                            <input type="checkbox" name="tag15" value="duck">
+                        </label>
+                    </fieldset>
+                    <button class="btn-primairy f-18" aria-label="Done filtering button">Done</button>
                 </fieldset>
-                <fieldset>
-                    <legend class="f-18">Tags</legend>
-
-                    <label>
-                        Soup
-                        <input type="checkbox" name="tag1" value="soup">
-                    </label>
-                    <label>
-                        Chicken
-                        <input type="checkbox" name="tag2" value="chicken">
-                    </label>
-                    <label>
-                        Noodles
-                        <input type="checkbox" name="tag3" value="noodles">
-                    </label>
-                    <label>
-                        Tofu
-                        <input type="checkbox" name="tag4" value="tofu">
-                    </label>
-                    <label>
-                        Chilli
-                        <input type="checkbox" name="tag5" value="chilli">
-                    </label>
-                    <label>
-                        Bean
-                        <input type="checkbox" name="tag6" value="bean">
-                    </label>
-                    <label>
-                        Egg
-                        <input type="checkbox" name="tag7" value="egg">
-                    </label>
-                    <label>
-                        Pork
-                        <input type="checkbox" name="tag8" value="pork">
-                    </label>
-                    <label>
-                        Vegetables
-                        <input type="checkbox" name="tag9" value="vegetables">
-                    </label>
-                    <label>
-                        Sticky
-                        <input type="checkbox" name="tag10" value="sticky">
-                    </label>
-                    <label>
-                        Miso
-                        <input type="checkbox" name="tag11" value="miso">
-                    </label>
-                    <label>
-                        broccoli
-                        <input type="checkbox" name="tag12" value="broccoli">
-                    </label>
-                    <label>
-                        Pak Choi
-                        <input type="checkbox" name="tag13" value="pak-choi">
-                    </label>
-                    <label>
-                        Ginger
-                        <input type="checkbox" name="tag14" value="ginger">
-                    </label>
-                    <label>
-                        Duck
-                        <input type="checkbox" name="tag15" value="duck">
-                    </label>
-                </fieldset>
-                <button class="btn-primairy f-18" aria-label="Done filtering button">Done</button>
-            </fieldset>
-        </form>
+            </form>
+        </dialog>
+     
         <script type="module" src="./scripts/main.js"></script>
     </body>
 </html>
