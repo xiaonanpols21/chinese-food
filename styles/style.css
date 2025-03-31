@@ -1,5 +1,7 @@
 @import "variables.css";
 @import "form.css";
+@import "main.css";
+@import "section.css";
 
 * {
     margin: 0px;
