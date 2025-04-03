@@ -8,14 +8,13 @@ const pageIndex = document.querySelector("section div") ;
 const dialog = document.querySelector("dialog");
 const filterBtn = document.querySelector("body > button");
 const doneBtn = dialog.querySelector("button:last-of-type");
+const closeBtn = dialog.querySelector("button:first-of-type");
 
 const inputEasy = document.querySelector("#easy");
 const inputHard = document.querySelector("#hard");
 
 const fieldTags = document.querySelector("#tags");
 const inputs = fieldTags.querySelectorAll('input');
-
-
 
 // Fetch JSON file
 // Bron: https://www.geeksforgeeks.org/read-json-file-using-javascript/
@@ -86,14 +85,14 @@ function changeData(data) {
 
     function checkLevel() {
         if (inputEasy.checked) {
-            currentData = currentData.filter(item => item.difficulty === "Easy"); // Simplified filter
+            currentData = data.filter(item => item.difficulty === "Easy"); // Simplified filter
         } else if (inputHard.checked) {
-            currentData = currentData.filter(item => item.difficulty === "Medium");
+            currentData = data.filter(item => item.difficulty === "Medium");
         }
     
         startIndex = 0; // Reset pagination
         currentIndex = 1;
-        
+
         renderItems();
     }
 
@@ -107,62 +106,115 @@ function changeData(data) {
             */
 
             // Bron: https://www.w3schools.com/jsref/jsref_switch.asp
+            /*
             switch (this.checked && this.value) {
                 case "soup":
-                    console.log("soup tag clicked");
-                    currentData = currentData.filter(item => item.title = "soup");
+                    // Chat gpt
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("soup"));
                     renderItems();
                     break;
                 case "chicken":
-                    console.log("chicken tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("chicken"));
+                    renderItems();
                     break;
                 case "noodles":
-                    console.log("noodles tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("noodles"));
+                    renderItems();
                     break;
                 case "tofu":
-                    console.log("tofu tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("tofu"));
+                    renderItems();
                     break;
                 case "chilli":
-                    console.log("chilli tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("chilli"));
+                    renderItems();
                     break;
                 case "bean":
-                    console.log("bean tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("bean"));
+                    renderItems();
                 case "egg":
-                    console.log("egg tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("egg"));
+                    renderItems();
                     break;
                 case "pork":
-                    console.log("pork tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("pork"));
+                    renderItems();
                     break;
                 case "vegetables":
-                    console.log("vegetables tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("vegetables"));
+                    renderItems();
                     break;
                 case "sticky":
-                    console.log("sticky tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("sticky"));
+                    renderItems();
                     break;
                 case "miso":
-                    console.log("miso tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("miso"));
+                    renderItems();
                     break;
                 case "broccoli":
-                    console.log("broccoli tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("broccoli"));
+                    renderItems();
                 case "pak-choi":
-                    console.log("pak-choi tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("pak choi"));
+                    renderItems();
                     break;
                 case "ginger":
-                    console.log("ginger tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("ginger"));
+                    renderItems();
                     break;
                 case "duck":
-                    console.log("duck tag clicked");
+                    currentData = currentData.filter((item) => item.title.toLowerCase().includes("duck"));
+                    renderItems();
             }
+            */
+           
+
+            // Chat gpt
+            if (this.checked) {
+                currentData = currentData.filter((item) => 
+                    item.title.toLowerCase().includes(this.value.toLowerCase()) // Use 'this.value' directly
+                );
+                
+            } else {
+                checkLevel();
+                currentData = currentData.filter((item) => 
+                    !item.title.toLowerCase().includes(this.value.toLowerCase())
+                );
+
+                // Full Chat gpt
+                // ✅ Check which checkboxes are still checked
+                const checkedValues = [...inputs] // Convert NodeList to Array
+                    .filter(input => input.checked) // Get only checked checkboxes
+                    .map(input => input.value.toLowerCase()); // Get their values
+
+                
+                if (checkedValues.length > 0) {
+                    // ✅ Re-filter data to show only items that match checked tags
+                    currentData = currentData.filter((item) => 
+                        checkedValues.some(tag => item.title.toLowerCase().includes(tag))
+                    );
+                } else {
+                    // ✅ If no checkboxes are checked, reset to full dataset
+                    currentData = [...data]; 
+                }
+                
+            }
+            
+            renderItems();
+
+
+
         }
-        input.addEventListener("click", checkTags);
+        input.addEventListener("change", checkTags);
     })
 
     
     nextBtn.addEventListener("click", goNext);
     prevBtn.addEventListener("click", goPrev);
 
-    inputEasy.addEventListener("click", checkLevel);
-    inputHard.addEventListener("click", checkLevel);
+    inputEasy.addEventListener("change", checkLevel);
+    inputHard.addEventListener("change", checkLevel);
 
     renderItems();
 }
@@ -178,3 +230,4 @@ function closeDialog(e) {
     e.preventDefault();
 }
 doneBtn.addEventListener("click", closeDialog);
+closeBtn.addEventListener("click", closeDialog);
